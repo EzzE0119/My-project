@@ -20,6 +20,9 @@ public class Ball : MonoBehaviour
     float elapsedTime = 0f;
     bool ballThrown = false;
 
+    [SerializeField] Transform OffSidePos;
+    [SerializeField] Transform LegSidePos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -159,6 +162,23 @@ public class Ball : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
         transform.position = ballStartingPos;
+        ballThrown = false;
+    }
+
+    public void OffSide()
+    {
+        transform.position = OffSidePos.position;
+        ballStartingPos = OffSidePos.position;
+        rb.velocity = Vector3.zero;
+        rb.useGravity = false;
+        ballThrown = false;
+    }
+    public void LegSide()
+    {
+        transform.position = LegSidePos.position;
+        ballStartingPos = LegSidePos.position;
+        rb.velocity = Vector3.zero;
+        rb.useGravity = false;
         ballThrown = false;
     }
 }
